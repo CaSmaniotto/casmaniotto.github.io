@@ -1,0 +1,378 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Epilogue', 'Arial';
+}
+
+a {
+    color: hsl(0, 0%, 41%)
+}
+
+p {
+    font-size: 18px;
+    color: hsl(0, 0%, 41%)
+}
+
+span {
+    font-size: 16px;
+}
+
+nav.navbar {
+    background-color: #fff;
+    display: flex;
+}
+
+nav.navbar, .menulogin {
+    align-items: center;
+    font-weight: 500;
+}
+
+.menulogin {
+    position: absolute;
+    display: flex;
+    padding: 20px 15px;
+    right: 0;
+    gap: 30px;
+}
+
+.menuopcoes {
+    display: flex;
+    padding: 26px 0px;
+}
+
+.menulogin a:nth-child(2) {
+    border-radius: 15px;
+    border: 1px solid hsl(0, 0%, 41%);
+}
+
+.menulogin a:nth-child(2):hover {
+    border-color: hsl(0, 0%, 8%);
+    transition: .2s;
+}
+
+nav a {
+    padding: 10px;
+    text-decoration: none;
+    background-color: hsl(0, 0%, 98%);
+}
+
+div.content {
+    font-weight: 500;
+}
+
+nav a:hover,.dropdown-content a:hover, div.content:hover {
+    transition: .2s;
+    color: hsl(0, 0%, 8%);
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0px 10px;
+}
+
+nav span#logo {
+    height: 89px;
+    padding: 0 30px;
+}
+
+nav span#logo img {
+    padding: 31px 0px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.content {
+    padding: 10px;;
+    gap: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.content img {
+    object-fit: cover;
+}
+
+.dropbtn {
+    color: hsl(0, 0%, 41%);
+    background-color: hsl(0, 0%, 98%);
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr .5fr;
+    position: absolute;
+    background-color: hsl(0, 0%, 98%);
+    border-radius: 15px;
+    padding: 10px;
+    width: 200px;
+    height: auto;
+    z-index: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dropdown-content a {
+    gap: 10px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    color: hsl(0, 0%, 8%);
+    transition: .2s;
+}
+
+.dropdown:hover .content img{
+    content: url(images/icon-arrow-up.svg);
+}
+
+main {
+    padding: 50px 200px 100px 200px;
+    background-color: hsl(0, 0%, 98%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+main h1 {
+    color: hsl(0, 0%, 8%);
+}
+
+main div.banner {
+    object-fit: cover;
+}
+
+main div.banner img{
+    width: 100%;
+    height: auto;
+}
+
+
+main div.tituloparagrafo {
+    padding-top: 80px;
+    position: relative;
+}
+
+main div.tituloparagrafo p {
+    word-wrap: break-word;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 60px 0px;
+}
+
+main a#btnlearnmore {
+    border: 1px solid hsl(0, 0%, 8%);
+    font-size: 16px;
+    padding: 20px 30px;
+    background-color: hsl(0, 0%, 8%);
+    color: hsl(0, 0%, 98%);
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+    transition: .2s;
+}
+
+main a#btnlearnmore:hover, main a#btnlearnmore:active {
+    background-color: hsl(0, 0%, 98%);
+    color: hsl(0, 0%, 8%);
+    border-color: hsl(0, 0%, 8%);
+    transition: .2s;
+}
+
+main .marcas {
+    position: absolute;
+    bottom: 0;
+    align-items: center;
+    display: flex;
+}
+
+main .marcas img {
+    width: auto; 
+    height: auto;
+    padding: 0 10px;
+}
+
+.menumobile {
+    display: none;
+}
+
+div#menu.slide {
+    display: none;
+    opacity: 0;
+}
+
+@media (min-width: 950px) {
+
+    main h1 {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 1300px) {
+
+    main {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 950px) {
+
+    nav.navbar {
+        justify-content: space-between;
+    }
+
+    .menuopcoes, .menulogin {
+        display: none;
+    }
+
+    .menumobile {
+        display: block;
+        padding: 0px 30px;
+    }
+
+    .menumobile button {
+        cursor: pointer;
+        background-color: none;
+        border: none;
+    }
+
+    main {
+        grid-template-columns: auto;
+        text-align: center;
+        padding: 0;
+        width: 100%;
+        height: auto;
+        margin-bottom: 60px;
+    }
+
+    main div.tituloparagrafo {
+        padding: 0;
+    }
+
+    main div.tituloparagrafo p, main h1 {
+        margin: 10px;
+    }
+
+    main div.banner {
+        grid-row: 1;
+    }
+
+    main div.banner img {
+        content: url(images/image-hero-mobile.png);
+    }
+
+    main .marcas {
+        position: relative;
+        justify-content: center;
+        object-fit: cover;
+    }
+
+    main .marcas img {
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    main div.divlearnmore {
+        margin: 40px;
+    }
+
+    main div.divlearnmore a#btnlearnmore{
+        padding: 10px;
+    }
+
+    div#menu.slide {
+        /*display: flex;*/
+        flex-direction: column;
+        background-color: hsl(0, 0%, 98%);
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 60%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    div#menu.slide a {
+        padding: 10px;
+        font-weight: 500;
+        color: hsl(0, 0%, 41%);
+        text-decoration: none;
+        width: auto;
+    }
+
+    div#menu.slide span {
+        font-weight: 500;
+    }
+
+    div.content-mobile {
+        background-color: none;
+    }
+
+    div.content-mobile span {
+        padding: 10px;
+    }
+
+    div#logo {
+        margin-left: auto;
+    }
+
+    div#logo button {
+        padding: 30px;
+        background-color: hsl(0, 0%, 98%);
+        border: none;
+    }
+
+    div#logo button img {
+        width: 100%;
+        height: auto;
+    }
+
+    div.dropdown-content {
+        padding-bottom: 0;
+        box-shadow: none;
+        list-style-type: none;
+        position: relative;
+    }
+    div#menu.slide li {
+        padding: 15px 15px 0;
+        list-style-type: none;   
+    }
+
+    div li.dropdown {
+        padding: 15px 15px 0px;
+    }
+
+    div.menulogin-mobile {
+        padding: 20px 10px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+
+    div.menulogin-mobile a:nth-child(2) {
+        border-radius: 15px;
+        margin: auto 15px;
+        border: 1px solid hsl(0, 0%, 41%);
+    }
+}
+
+.attribution {
+    text-align: center;
+}

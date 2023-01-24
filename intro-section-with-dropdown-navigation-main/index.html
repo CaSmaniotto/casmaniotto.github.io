@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <span id="logo"><img src="images/logo.svg" alt="logo"></span>
+    <div class="menumobile">
+      <button id="menu-mobile-abrir" onclick="abreMenu"><img src="images/icon-menu.svg" alt="icon-menu"></button>
+    </div>
+    <div class="menuopcoes">
+      <ul>
+        <li class="dropdown">
+          <button class="dropbtn" id="btn-drop">
+            <div class="content">
+              <span>Features</span>
+              <img src="images/icon-arrow-down.svg" alt="icon-arrow">
+            </div>
+          </button>
+          <div class="dropdown-content" id="dropcont">
+            <a href="#"><img src="images/icon-todo.svg" alt="icon-todo">
+              Todo List</a>
+            <a href="#"><img src="images/icon-calendar.svg" alt="icon-calendar">
+              Calendar</a>
+            <a href="#"><img src="images/icon-reminders.svg" alt="icon-reminders">
+              Reminders</a>
+            <a href="#"><img src="images/icon-planning.svg" alt="icon-planning">
+              Planning</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <button class="dropbtn" id="btn-drop">
+            <div class="content">
+              <span>Company</span>
+              <img src="images/icon-arrow-down.svg" alt="icon-arrow">
+            </div>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">History</a>
+            <a href="#">Our Team</a>
+            <a href="#">Blog</a>
+          </div>
+        </li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+    <div class="menulogin">
+      <a href="#">Login</a>
+      <a href="#">Register</a>
+    </div>
+  </nav>
+  <div class="slide" id="menu">
+    <div id="logo">
+      <button id="menu-mobile-fechar" onclick="fechaMenu"><img src="images/icon-close-menu.svg" alt="icon-menu"></button>
+    </div>
+    <ul>
+      <li class="dropdown">
+        <button class="dropbtn" id="btn-drop">
+          <div class="content-mobile">
+            <span>Features</span>
+            <img src="images/icon-arrow-down.svg" alt="icon-arrow">
+          </div>
+        </button>
+        <div class="dropdown-content" id="dropcontent">
+          <a href="#"><img src="images/icon-todo.svg" alt="icon-todo">
+            Todo List</a>
+          <a href="#"><img src="images/icon-calendar.svg" alt="icon-calendar">
+            Calendar</a>
+          <a href="#"><img src="images/icon-reminders.svg" alt="icon-reminders">
+            Reminders</a>
+          <a href="#"><img src="images/icon-planning.svg" alt="icon-planning">
+            Planning</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <button class="dropbtn" id="btn-drop">
+          <div class="content-mobile">
+            <span>Company</span>
+            <img src="images/icon-arrow-down.svg" alt="icon-arrow">
+          </div>
+        </button>
+        <div class="dropdown-content" id="dropcontent">
+          <a href="#">History</a>
+          <a href="#">Our Team</a>
+          <a href="#">Blog</a>
+        </div>
+      </li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <div class="menulogin-mobile">
+      <a href="#">Login</a>
+      <a href="#">Register</a>
+    </div>
+  </div>
+  <main>
+    <div class="tituloparagrafo">
+      <h1>Make remote work</h1>
+      <p>Get your team in sync, no matter your location. Streamline processes, 
+        create team rituals, and watch productivity soar.
+      </p>
+      <div class="divlearnmore">
+        <a href="#" id="btnlearnmore">Learn more</a>
+      </div>
+      <div class="marcas">
+        <img src="images/client-databiz.svg" alt="databiz">
+        <img src="images/client-audiophile.svg" alt="audiophile">
+        <img src="images/client-meet.svg" alt="meet">
+        <img src="images/client-maker.svg" alt="maker">
+      </div>
+    </div>
+    <div class="banner">
+      <img src="images/image-hero-desktop.png" alt="image-hero-desktop">
+    </div>
+  </main>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://www.frontendmentor.io/profile/CaSmaniotto">CaSmaniotto</a>.
+  </div>
+
+  <script>
+    document.getElementById("menu-mobile-abrir").addEventListener("click", abreMenu);
+    document.getElementById("menu-mobile-fechar").addEventListener("click", fechaMenu);
+
+    function abreMenu() {
+      menu.style.display = 'flex'
+      menu.style.opacity = '1'
+    }
+
+    function fechaMenu() {
+      menu.style.display = 'none'
+      menu.style.opacity = '0'
+    }
+
+  </script>
+</body>
+</html>
