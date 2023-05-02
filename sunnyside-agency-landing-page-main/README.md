@@ -27,8 +27,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://casmaniotto.github.io/sunnyside-agency-landing-page-main/](https://casmaniotto.github.io/sunnyside-agency-landing-page-main/)
+- Live Site URL: [https://www.frontendmentor.io/solutions/soluo-com-css-grid-e-flex-6JBsDQr-C5](https://www.frontendmentor.io/solutions/soluo-com-css-grid-e-flex-6JBsDQr-C5)
 
 ## My process
 
