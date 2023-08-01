@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+</head>
+<body>
+
+  <!-- Sign-up form start -->
+  <div class="container" id="form">
+    <div class="cartao">
+      <div class="formulario">
+        <div class="texto">
+          <h1>Stay updated!</h1>
+          <p>Join 60,000+ product managers receiving monthly updates on:</p>
+        </div>
+
+        <div class="lista">
+          <div class="elemento">
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><g fill="none"><circle cx="10.5" cy="10.5" r="10.5" fill="#FF6155"/><path stroke="#FFF" stroke-width="2" d="M6 11.381 8.735 14 15 8"/></g></svg>
+            <p>Product discovery and building what matters</p>
+          </div>
+          <div class="elemento">
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><g fill="none"><circle cx="10.5" cy="10.5" r="10.5" fill="#FF6155"/><path stroke="#FFF" stroke-width="2" d="M6 11.381 8.735 14 15 8"/></g></svg>
+            <p>Measuring to ensure updates are a success</p>
+          </div>
+          <div class="elemento">
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><g fill="none"><circle cx="10.5" cy="10.5" r="10.5" fill="#FF6155"/><path stroke="#FFF" stroke-width="2" d="M6 11.381 8.735 14 15 8"/></g></svg>
+            <p>And much more!</p>
+          </div>
+        </div>
+
+        <form action="">
+          <div>
+            <label for="">Email address</label>
+            <label for="" id="erro">Valid email required</label>
+          </div>
+          <input type="email" name="email" id="email" placeholder="email@company.com">
+          <input type="submit" name="enviar" id="enviar" value="Subscribe to monthly newsletter">
+        </form>
+      </div>
+      <div class="imagem">
+        <img src="assets/images/illustration-sign-up-desktop.svg" alt="illustration-sign-up">
+      </div>
+    </div>
+  </div>
+  <div class="container" id="msg">
+    <div class="mensagem">
+      <div>
+        <img src="assets/images/icon-success.svg" alt="illustration-sign-up">
+        <h1>Thanks for subscribing!</h1>
+        <p>A confirmation email has been sent to <b><span id="email_usuario"></span>.</b>
+          Please open it and click the button inside to confirm your subscription.</p>
+          <input type="submit" name="voltar" id="voltar" value="Dismiss message">
+      </div>
+    </div>
+  </div>
+  <div class="attribution" style="margin-top: 60px; text-align: center; color: #fff;">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://www.frontendmentor.io/profile/CaSmaniotto">CaSmaniotto</a>.
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+const validateEmail = (email) => {
+  return email.match(
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  );
+};
+
+const validate = () => {
+  const $erro = $('#erro');
+  const $email = $('#email');
+  const email = $('#email').val();
+  const $container_2 = $('#msg');
+  const $container_1 = $('#form');
+  const $email_usuario = $('#email_usuario')
+  
+  $email_usuario.text('');
+  $erro.text('');
+
+  if(validateEmail(email)){
+    $email_usuario.text(email);
+    $container_2.css('display', 'block');
+    $container_1.css('display', 'none');
+  } else{
+    $email.css('background-color', 'hsla(4, 96%, 73%, 0.308)')
+    $email.css('border-color', 'hsl(4, 100%, 67%)')
+    $email.css('color', 'hsl(4, 100%, 67%)');
+    $erro.text('Valid email required');
+    $erro.css('color', 'hsl(4, 100%, 67%)');
+    $erro.css('visibility', 'visible');
+  }
+  return false;
+}
+
+const voltar = () => {
+  const $container_2 = $('#msg');
+  const $container_1 = $('#form');
+
+  $container_1.css('display', 'block');
+  $container_2.css('display', 'none');
+
+  return false;
+}
+
+$('#voltar').on('click', voltar);
+$('#enviar').on('click', validate);
+</script>
+</body>
+</html>

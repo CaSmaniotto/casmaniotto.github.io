@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: hsl(234, 29%, 20%);
+}
+
+body {
+    background-color: hsl(235, 18%, 26%);
+}
+
+.container {
+    border-radius: 25px;
+    margin-top: 5vw;
+}
+
+.container:nth-child(2) {
+    display: none;
+}
+
+.cartao {
+    color: hsl(234, 29%, 20%);
+    font-weight: 400;
+    border-radius: 25px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 60vw;
+    max-width: 900px;
+    background-color: #fff;
+    margin: auto;
+}
+
+.cartao .imagem img {
+    width: 100%;
+    min-height: auto;
+    object-fit: cover
+}
+
+.formulario {
+    padding: 40px;
+}
+
+.formulario .texto {
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.formulario .lista {
+    margin: 30px 0;
+}
+
+.formulario .elemento {
+    margin: 10px 0;
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.formulario form {
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario form div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.formulario form label {
+    text-align: start;
+    font-size: 12px;
+    font-weight: 700;
+    color: hsl(235, 18%, 26%);
+}
+
+.formulario form label#erro {
+    color: hsl(4, 100%, 67%);
+    text-align: right;
+    visibility: hidden;
+}
+
+.formulario form input#email {
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid hsl(231, 7%, 60%);
+    margin-bottom: 10px;
+}
+
+.formulario form input#email:focus {
+    outline: none;
+    border: 1px solid hsl(234, 29%, 20%);
+    color: hsl(234, 29%, 20%);
+}
+
+.formulario form input#enviar, input#voltar {
+    background-color: hsl(234, 29%, 20%);
+    color: #fff;
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.formulario form input#enviar:hover, input#voltar:hover {
+    transition: .5s;
+    background-color: hsl(4, 100%, 67%);
+    box-shadow: hsl(4, 100%, 67%) 0px 4px 12px;
+}
+
+.formulario form input#enviar:active {
+    background-image: linear-gradient(to right, hsl(348,99%,66%), hsl(4, 100%, 67%));
+    box-shadow: hsl(4, 100%, 67%) 0px 4px 12px;
+}
+
+.mensagem {
+    color: hsl(234, 29%, 20%);
+    font-weight: 400;
+    border-radius: 25px;
+    padding: 60px;
+    width: auto;
+    max-width: 30vw;
+    background-color: #fff;
+    margin: auto;
+}
+
+.mensagem div {
+    display: grid;
+    gap: 35px;
+}
+
+@media only screen and (max-width: 1200px) {
+
+    div.cartao {
+        width: 80vw;
+    }
+
+    div.formulario, div.mensagem {
+        padding: 20px;
+    }
+
+    .mensagem {
+        max-width: 40vw;
+    }
+
+}
+
+@media only screen and (max-width: 800px) {
+
+    h1 {
+        font-size: 32px;
+    }
+
+    div.container {
+        margin: 0;
+    }
+
+    div.cartao {
+        border-radius: 0;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    div.mensagem {
+        min-width: 100vw;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    div.mensagem div {
+        padding: 20px;
+    }
+
+    div.imagem img {
+        content: url('assets/images/illustration-sign-up-mobile.svg');
+    }
+    
+    div.mensagem div input#voltar {
+        margin-top: 90px;
+    }
+
+}
