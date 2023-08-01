@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://casmaniotto.github.io/newsletter-sign-up-with-success-message-main](https://casmaniotto.github.io/newsletter-sign-up-with-success-message-main)
-- Live Site URL: [[Add live site URL here](https://casmaniotto.github.io/newsletter-sign-up-with-success-message-main)](https://casmaniotto.github.io/newsletter-sign-up-with-success-message-main/)
+- Solution URL: [https://www.frontendmentor.io/solutions/responsive-jquery-Cy7Ydb9hzq](https://www.frontendmentor.io/solutions/responsive-jquery-Cy7Ydb9hzq)
+- Live Site URL: [https://casmaniotto.github.io/newsletter-sign-up-with-success-message-main](https://casmaniotto.github.io/newsletter-sign-up-with-success-message-main/)
 
 ## My process
 
