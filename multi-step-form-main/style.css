@@ -5,15 +5,14 @@
 }
 
 .container {
-    /* background-color: hsl(217, 100%, 97%); */
-    background-color: blue;
+    background-color: hsl(217, 100%, 97%);
 }
 
 .cartao {
     display: flex;
     background-color: #fff;
-    width: 65vw;
-    max-width: 1000px;
+    width: 70vw;
+    max-width: 850px;
     margin: auto;
     padding: 10px;
     border-radius: 10px;
@@ -44,11 +43,13 @@
     border-radius: 25px;
     background-color: transparent;
     border: 1px solid #fff;
+    cursor: context-menu;
 }
 
-.menu a:focus {
-    background-color: hsl(206, 94%, 87%);
-    color: hsl(213, 96%, 18%);
+/* .menu a:focus */
+.focused {
+    background-color: hsl(206, 94%, 87%) !important;
+    color: hsl(213, 96%, 18%) !important;
 }
 
 .item {
@@ -63,6 +64,8 @@
 }
 
 .main {
+    width: 100%;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -78,7 +81,7 @@
     color: hsl(231, 11%, 63%);
 }
 
-form {
+.form {
     gap: 10px;
     display: flex;
     flex-direction: column;
@@ -86,29 +89,49 @@ form {
     width: auto;
 }
 
-form label {
+.form label {
     color: hsl(213, 96%, 18%);
 }
 
-form label span {
+.form label span {
     color: hsl(354, 84%, 57%);
     font-size: 12px;
     font-weight: 500;
 }
 
-form input {
+.form input {
     color: hsl(213, 96%, 18%);
     padding: 10px 6px;
     border-radius: 8px;
     border: 1px solid hsl(229, 24%, 87%);
 }
 
-form input:focus {
+.form input:focus {
     border: 1px solid hsl(243, 100%, 62%);
     outline: 0;
 }
 
-form input#btn-next {
+.form div.botoes {
+    width: 100%;
+    justify-content: space-around;
+    margin: auto 0 0 auto;
+}
+
+.form input#btn-back {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 700;
+    color: hsl(231, 11%, 63%);
+    transition: .5s;
+}
+
+.form input#btn-back:hover {
+    color: hsl(213, 96%, 18%);
+}
+
+.form input#btn-next {
     margin: auto 0 0 auto;
     float: right;
     width: 100px;
@@ -119,29 +142,29 @@ form input#btn-next {
     background-color: hsl(213, 96%, 18%);
     cursor: pointer;
     transition: .5s;
+    font-weight: 700;
 }
 
-form input#btn-next:hover {
+.form input#btn-next:hover {
     border-color: hsl(213, 99%, 32%);
     background-color: hsl(213, 99%, 32%);
 }
 
 /* step 2 */
 
-form div {
+.form div {
     display: flex;
 }
 
-form .lista-planos {
-    gap: 30px;
-    width: 100%;
+.form .lista-planos {
+    justify-content: space-between;
+    width: auto;
 }
 
-form div .plano {
+.form div .plano {
     background-color: #fff;
-    width: auto;
-    height: auto;
     min-width: 120px;
+    width: auto;
     border: 1px solid hsl(231, 11%, 63%);
     border-radius: 10px;
     display: flex;
@@ -151,16 +174,16 @@ form div .plano {
     cursor: pointer;
 }
 
-form div .plano:focus {
-    border: 1px solid hsl(243, 100%, 62%);
-    background-color: hsl(217, 100%, 97%);
+.selected {
+    border: 1px solid hsl(243, 100%, 62%) !important;
+    background-color: hsl(217, 100%, 97%) !important;
 }
 
-form div .plano:hover {
+.form div .plano:hover {
     border: 1px solid hsl(243, 100%, 62%);
 }
 
-form div .plano .preco {
+.form div .plano .preco {
     color: hsl(231, 11%, 63%);
     text-align: start;
     gap: 5px;
@@ -168,25 +191,25 @@ form div .plano .preco {
     flex-direction: column;
 }
 
-form div .plano .preco span {
+.form div .plano .preco span {
     float: left;
 }
 
-form div .plano .preco span#sub {
+.form div .plano .preco span#sub {
     color: hsl(213, 96%, 18%);
 }
 
-form div .plano .preco span#yearly {
+.form div .plano .preco span#yearly {
     color: hsl(213, 96%, 18%);
     display: none;
 }
 
 .area-checkbox {
     margin-top: 20px;
-    background-color: red;
+    background-color: hsl(217, 100%, 97%);
     justify-content: center;
     padding: 10px;
-    gap: 10px;
+    gap: 20px;
 }
 
 .switch {
@@ -238,4 +261,18 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+span.year {
+    color: hsl(231, 11%, 63%);
+    font-size: 14px;
+    margin: auto 0;
+    font-weight: 700;
+}
+
+span.monthly {
+    color: hsl(213, 96%, 18%);
+    font-size: 14px;
+    margin: auto 0;
+    font-weight: 700;
 }

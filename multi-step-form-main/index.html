@@ -25,33 +25,33 @@
         </div>
         <div class="menu">
           <div class="item">
-            <a href="#">1</a>
+            <a href="#" class="indice focused">1</a>
             <p><span>STEP 1</span><br>
             <b>YOUR INFO</b></p>
           </div>
           <div class="item">
-            <a href="#">2</a>
+            <a href="#" class="indice">2</a>
             <p><span>STEP 2</span><br>
             <b>SELECT PLAN</b></p>
           </div>
           <div class="item">
-            <a href="#">3</a>
+            <a href="#" class="indice">3</a>
             <p><span>STEP 3</span><br>
             <b>ADD-ONS</b></p>
           </div>
           <div class="item">
-            <a href="#">4</a>
+            <a href="#" class="indice">4</a>
             <p><span>STEP 4</span><br>
             <b>SUMMARY</b></p>
           </div>
         </div>
       </div>
-      <div class="main" style="display: none;">
+      <div class="main">
         <div>
           <h1>Personagel info</h1>
           <p>Please provide your name, email address, and phone number.</p>
         </div>
-        <form action="">
+        <div class="form">
           <label for="">Name<span style="float: right" id="alerta"></span></label>
           <input type="text" name="nome" id="nome" placeholder="e.g. Stephen King">
 
@@ -59,20 +59,24 @@
           <input type="email" name="email" id="email" placeholder="e.g. stephenking@lorem.com">
 
           <label for="">Phone Number<span style="float: right" id="alerta"></span></label>
-          <input type="tel" name="numero" id="numero" placeholder="e.g. +1 234 567 890" maxlength="10" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+          <input type="tel" name="numero" id="numero" placeholder="e.g. +1 234 567 890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="10">
 
-          <input type="submit" value="Next Step" id="btn-next">
-        </form>
+          <div class="botoes">
+            <input type="button" value="Go Back" id="btn-back" onclick="nextPrev(-1)">
+            <!-- <input type="submit" value="Next Step" id="btn-next" onclick="nextPrev(1)"> -->
+            <input type="submit" value="Next Step" id="btn-next" class="enviar">
+          </div>
+        </div>
       </div>
 
-      <div class="main">
+      <div class="main" style="display: none;">
         <div>
           <h1>Select your plan</h1>
           <p>You have the option of monthly or yearly billing.</p>
         </div>
-        <form action="">
+        <div class="form">
           <div class="lista-planos">
-            <button class="plano" type="button">
+            <button class="plano selected" type="button" onclick="selectButton(1)">
               <div class="icone">
                 <img src="assets/images/icon-arcade.svg" alt="arcade">
               </div>
@@ -83,7 +87,7 @@
               </div>
             </button>
   
-            <button class="plano" type="button">
+            <button class="plano" type="button" onclick="selectButton(2)">
               <div class="icone">
                 <img src="assets/images/icon-advanced.svg" alt="advanced">
               </div>
@@ -94,7 +98,7 @@
               </div>
             </button>
 
-            <button class="plano" type="button">
+            <button class="plano" type="button" onclick="selectButton(3)">
               <div class="icone">
                 <img src="assets/images/icon-pro.svg" alt="pro">
               </div>
@@ -114,20 +118,15 @@
             </label>
             <span class="year">YearLy</span>
           </div>
-          <input type="submit" value="Next Step" id="btn-next">
-        </form>
+          <div class="botoes">
+            <input type="button" value="Go Back" id="btn-back" onclick="nextPrev(-1)">
+            <!-- <input type="submit" value="Next Step" id="btn-next" onclick="nextPrev(1)"> -->
+            <input type="button" value="Next Step" id="btn-next" onclick="nextPrev(1)">
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-
-
-
-<!-- 
-  Go Back
-  Next Step -->
-
-  <!-- Step 2 end -->
 
   <!-- Step 3 start -->
 
@@ -187,6 +186,8 @@
     const email = document.getElementById('email');
     const numero = document.getElementById('numero');
     const checkbox = document.getElementById('checkbox');
+    const enviar = document.getElementsByClassName('enviar');
+    // console.log(enviar[0]);
 
     // Adiciona um evento de verificação quando algum input perder o foco
     inputs.forEach((input, index) => {
@@ -195,8 +196,10 @@
           alertas[index].style.display = 'inline'; // Mostra o span de aviso correspondente
           alertas[index].innerHTML = 'This field is required';
           input.style.borderColor = 'hsl(354, 84%, 57%)';
+          return false
         } else {
           alertas[index].style.display = 'none';   // Esconde o span de aviso
+          input.style.borderColor = 'hsl(243, 100%, 62%)';
         }
       })
     });
@@ -207,6 +210,7 @@
       if (!email.value.match(validRegex)) {
         alertas[1].style.display = 'inline';
         alertas[1].innerHTML = 'Invalid email address';
+        return false
       } else {
         alertas[1].style.display = 'none';
       }
@@ -218,23 +222,111 @@
       if ((!numero.value.match(re)) || numero.value.length != 10) {
         alertas[2].style.display = 'inline';
         alertas[2].innerHTML = 'Invalid telephone number';
+        return false
       } else {
         alertas[2].style.display = 'none';
       }
     });
 
-    
+    // Valida o formulário
+    enviar[0].addEventListener('click', () => {
+      inputs.forEach((input, index) => {
+        if (input.value.trim() === '') {
+          alertas[index].style.display = 'inline'; // Mostra o span de aviso correspondente
+          alertas[index].innerHTML = 'This field is required';
+          input.style.borderColor = 'hsl(354, 84%, 57%)';
+          return false
+        } else {
+          alertas[index].style.display = 'none';   // Esconde o span de aviso
+          input.style.borderColor = 'hsl(243, 100%, 62%)';
+        }
+      });
+
+      var validRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (!email.value.match(validRegex)) {
+        alertas[1].style.display = 'inline';
+        alertas[1].innerHTML = 'Invalid email address';
+        return false
+      } else {
+        alertas[1].style.display = 'none';
+      };
+
+      var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+      if ((!numero.value.match(re)) || numero.value.length != 10) {
+        alertas[2].style.display = 'inline';
+        alertas[2].innerHTML = 'Invalid telephone number';
+        return false
+      } else {
+        alertas[2].style.display = 'none';
+      };
+      
+      return nextPrev(1);
+
+    })
+
+    // Navega para a próxima tab ou para a anterior
+    current = 0
+
+    function nextPrev(n) {
+      var indices = document.querySelectorAll('.indice');
+      var tabs = document.querySelectorAll('.main');
+
+      tabs[current].style.display = 'none';
+      indices[current].classList.remove('focused');
+      current += n;
+      
+      tabs[current].style.display = 'flex';
+      indices[current].classList.add('focused');
+
+      if (current == 0) {
+        document.getElementById('btn-back').style.display = 'none';
+        indices[current].classList.add('focused');
+      }
+    }
+
+    // Exibe o texto ao clicar no checkbox e vice-versa
+
     checkbox.addEventListener('change', () => {
       const yearlyElements = document.querySelectorAll('#yearly');
+      let mSpam = document.getElementsByClassName('monthly');
+      let ySpam = document.getElementsByClassName('year');
 
       yearlyElements.forEach(index => {
         if (checkbox.checked) {
+          ySpam[0].style.color = "hsl(213, 96%, 18%)"; //azul
+          mSpam[0].style.color = "hsl(231, 11%, 63%)"; //cinza
           index.style.display = 'block';
         } else {
+          ySpam[0].style.color = "hsl(231, 11%, 63%)";
+          mSpam[0].style.color = "hsl(213, 96%, 18%)";
           index.style.display = 'none';
         }
       });
     });
+
+    // Oculta o botão de voltar
+    document.addEventListener('DOMContentLoaded', () => {
+      if (current == 0) {
+        document.getElementById('btn-back').style.display = 'none'
+      }
+    });
+
+    // Seleciona o botão e 'desseleciona' os outros
+    let selectedButton = null;
+
+    function selectButton(buttonIndex) {
+      const buttons = document.querySelectorAll('.plano');
+      
+      buttons.forEach((button, index) => {
+        if (index + 1 === buttonIndex) {
+          button.classList.add('selected');
+          selectedButton = button;
+        } else {
+          button.classList.remove('selected');
+        }
+      });
+    }
+
 
   </script>
 </body>
