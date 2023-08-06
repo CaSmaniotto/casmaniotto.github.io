@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Multi-step form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar start -->
+  <div class="container">
+    <div class="cartao">
+      <div class="sidebar">
+        <div class="imagem">
+          <img src="assets/images/bg-sidebar-desktop.svg" alt="">
+        </div>
+        <div class="menu">
+          <div class="item">
+            <a href="#">1</a>
+            <p><span>STEP 1</span><br>
+            <b>YOUR INFO</b></p>
+          </div>
+          <div class="item">
+            <a href="#">2</a>
+            <p><span>STEP 2</span><br>
+            <b>SELECT PLAN</b></p>
+          </div>
+          <div class="item">
+            <a href="#">3</a>
+            <p><span>STEP 3</span><br>
+            <b>ADD-ONS</b></p>
+          </div>
+          <div class="item">
+            <a href="#">4</a>
+            <p><span>STEP 4</span><br>
+            <b>SUMMARY</b></p>
+          </div>
+        </div>
+      </div>
+      <div class="main" style="display: none;">
+        <div>
+          <h1>Personagel info</h1>
+          <p>Please provide your name, email address, and phone number.</p>
+        </div>
+        <form action="">
+          <label for="">Name<span style="float: right" id="alerta"></span></label>
+          <input type="text" name="nome" id="nome" placeholder="e.g. Stephen King">
+
+          <label for="">Email Address<span style="float: right" id="alerta"></span></label>
+          <input type="email" name="email" id="email" placeholder="e.g. stephenking@lorem.com">
+
+          <label for="">Phone Number<span style="float: right" id="alerta"></span></label>
+          <input type="tel" name="numero" id="numero" placeholder="e.g. +1 234 567 890" maxlength="10" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+
+          <input type="submit" value="Next Step" id="btn-next">
+        </form>
+      </div>
+
+      <div class="main">
+        <div>
+          <h1>Select your plan</h1>
+          <p>You have the option of monthly or yearly billing.</p>
+        </div>
+        <form action="">
+          <div class="lista-planos">
+            <button class="plano" type="button">
+              <div class="icone">
+                <img src="assets/images/icon-arcade.svg" alt="arcade">
+              </div>
+              <div class="preco">
+                <span id="sub"><b>Arcade</b></span>
+                <span>$9/mo</span>
+                <span id="yearly">2 months free</span>
+              </div>
+            </button>
+  
+            <button class="plano" type="button">
+              <div class="icone">
+                <img src="assets/images/icon-advanced.svg" alt="advanced">
+              </div>
+              <div class="preco">
+                <span id="sub"><b>Advanced</b></span>
+                <span>$12/mo</span>
+                <span id="yearly">2 months free</span>
+              </div>
+            </button>
+
+            <button class="plano" type="button">
+              <div class="icone">
+                <img src="assets/images/icon-pro.svg" alt="pro">
+              </div>
+              <div class="preco">
+                <span id="sub"><b>Pro</b></span>
+                <span>$15/mo</span>
+                <span id="yearly">2 months free</span>
+              </div>
+            </button>
+          </div>
+
+          <div class="area-checkbox">
+            <span class="monthly">MonthLy</span>
+            <label class="switch">
+              <input type="checkbox" id="checkbox">
+              <span class="slider round"></span>
+            </label>
+            <span class="year">YearLy</span>
+          </div>
+          <input type="submit" value="Next Step" id="btn-next">
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- 
+  Go Back
+  Next Step -->
+
+  <!-- Step 2 end -->
+
+  <!-- Step 3 start -->
+
+  <!-- Pick add-ons
+  Add-ons help enhance your gaming experience.
+
+  Online service
+  Access to multiplayer games
+  +$1/mo
+
+  Larger storage
+  Extra 1TB of cloud save
+  +$2/mo
+
+  Customizable Profile
+  Custom theme on your profile
+  +$2/mo
+
+  Go Back
+  Next Step -->
+
+  <!-- Step 3 end -->
+
+  <!-- Step 4 start -->
+
+  <!-- Finishing up
+  Double-check everything looks OK before confirming. -->
+
+  <!-- Dynamically add subscription and add-on selections here -->
+
+  <!-- Total (per month/year)
+
+  Go Back
+  Confirm -->
+
+  <!-- Step 4 end -->
+
+  <!-- Step 5 start -->
+
+  <!-- Thank you!
+
+  Thanks for confirming your subscription! We hope you have fun 
+  using our platform. If you ever need support, please feel free 
+  to email us at support@loremgaming.com. -->
+
+  <!-- Step 5 end -->
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+
+  <script>
+    // Captura os elementos de input e spans de aviso
+    const inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
+    const alertas = document.querySelectorAll('#alerta');
+    const email = document.getElementById('email');
+    const numero = document.getElementById('numero');
+    const checkbox = document.getElementById('checkbox');
+
+    // Adiciona um evento de verificação quando algum input perder o foco
+    inputs.forEach((input, index) => {
+      input.addEventListener('input', () => {
+        if (input.value.trim() === '') {
+          alertas[index].style.display = 'inline'; // Mostra o span de aviso correspondente
+          alertas[index].innerHTML = 'This field is required';
+          input.style.borderColor = 'hsl(354, 84%, 57%)';
+        } else {
+          alertas[index].style.display = 'none';   // Esconde o span de aviso
+        }
+      })
+    });
+
+    // Verifica se o email é valido
+    email.addEventListener('input', () => {
+      var validRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (!email.value.match(validRegex)) {
+        alertas[1].style.display = 'inline';
+        alertas[1].innerHTML = 'Invalid email address';
+      } else {
+        alertas[1].style.display = 'none';
+      }
+    });
+
+    // Verifica se o número de telefone é valido
+    numero.addEventListener('input', () => {
+      var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+      if ((!numero.value.match(re)) || numero.value.length != 10) {
+        alertas[2].style.display = 'inline';
+        alertas[2].innerHTML = 'Invalid telephone number';
+      } else {
+        alertas[2].style.display = 'none';
+      }
+    });
+
+    
+    checkbox.addEventListener('change', () => {
+      const yearlyElements = document.querySelectorAll('#yearly');
+
+      yearlyElements.forEach(index => {
+        if (checkbox.checked) {
+          index.style.display = 'block';
+        } else {
+          index.style.display = 'none';
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>
