@@ -276,3 +276,52 @@ span.monthly {
     margin: auto 0;
     font-weight: 700;
 }
+
+.form .complementos {
+    height: 50px;
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    border: 1px solid hsl(229, 24%, 87%);
+    border-radius: 10px;
+    justify-content: space-between;
+}
+
+.form .complementos:hover {
+    border: 1px solid hsl(243, 100%, 62%);
+    background-color: hsl(217, 100%, 97%);
+}
+
+.ticado {
+    border: 1px solid hsl(243, 100%, 62%) !important;
+    background-color: hsl(217, 100%, 97%) !important;
+}
+
+.form .complementos input {
+    width: 20px;
+    height: 20px;
+    margin: auto 0;
+    padding: 0;
+    border-radius: 50%;
+    accent-color: hsl(243, 100%, 62%);
+    border: 1px solid hsl(229, 24%, 87%);
+}
+
+.form .complementos p {
+    color: hsl(231, 11%, 63%);
+    margin: auto 0;
+    line-height: 22px;
+}
+
+.form .complementos p#price {
+    color: hsl(243, 100%, 62%);
+}
+
+.form .complementos span {
+    font-weight: 700;
+    color: hsl(213, 96%, 18%);
+}
+
+.form .complementos div.check {
+    gap: 25px;
+}

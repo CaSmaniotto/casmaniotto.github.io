@@ -15,8 +15,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Sidebar start -->
   <div class="container">
     <div class="cartao">
       <div class="sidebar">
@@ -132,6 +130,30 @@
           <p>Add-ons help enhance your gaming experience.</p>
         </div>
         <div class="form">
+          <div class="complementos" id="complementos">
+            <div class="check">
+              <input type="checkbox" name="checkmark" id="checkmark" class="checkmark">
+              <p><span>Online Service</span><br>
+                Access to multiplayer games</p>
+            </div>
+            <p id="price">+$1/mo</p>
+          </div>
+          <div class="complementos">
+            <div class="check">
+              <input type="checkbox" name="checkmark" id="checkmark" class="checkmark">
+              <p><span>Larger storage</span><br>
+                Extra 1TB of cloud save</p>
+            </div>
+            <p id="price">+$2/mo</p>
+          </div>
+          <div class="complementos">
+            <div class="check">
+              <input type="checkbox" name="checkmark" id="checkmark" class="checkmark">
+              <p><span>Customizable Profile</span><br>
+                Custom theme on your profile</p>
+            </div>
+            <p id="price">+$2/mo</p>
+          </div>
           <div class="botoes">
             <input type="button" value="Go Back" id="btn-back" onclick="nextPrev(-1)">
             <!-- <input type="submit" value="Next Step" id="btn-next" onclick="nextPrev(1)"> -->
@@ -143,8 +165,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Step 3 start -->
 
   <!--
 
@@ -317,7 +337,7 @@
       }
     });
 
-    // Seleciona o botão e 'desseleciona' os outros
+    // Seleciona o botão e 'desseleciona' os outros -- step2 --
     let selectedButton = null;
 
     function selectButton(buttonIndex) {
@@ -332,6 +352,36 @@
         }
       });
     }
+
+    // Muda o estado das checkboxes --step 3--
+    const checkmarks = document.querySelectorAll('.checkmark');
+    const targetDivs = document.querySelectorAll('.complementos');
+
+    targetDivs.forEach((targetDiv, index) => {
+      targetDiv.addEventListener('click', () => {
+        const checkmark = checkmarks[index];
+        if (!checkmark.checked) {
+          checkmark.checked = !checkmark.checked;
+          targetDiv.classList.add('ticado');
+        } else {
+          checkmark.checked = !checkmark.checked;
+          targetDiv.classList.remove('ticado');
+        }
+      });
+    });
+
+    checkmarks.forEach((checkmark, index) => {
+      checkmark.addEventListener('change', () => {
+        const targetDiv = targetDivs[index];
+        if ((!checkmark.checked) || (!targetDiv.classList.contains('ticado'))) {
+          checkmark.checked = !checkmark.checked;
+          targetDiv.classList.add('ticado');
+        } else {
+          checkmark.checked = !checkmark.checked;
+          targetDiv.classList.remove('ticado');
+        }
+      });
+    });
   </script>
 </body>
 </html>
