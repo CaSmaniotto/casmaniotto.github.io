@@ -131,7 +131,7 @@
     color: hsl(213, 96%, 18%);
 }
 
-.form input#btn-next {
+.form input#btn-next, input#btn-confirm {
     margin: auto 0 0 auto;
     float: right;
     width: 100px;
@@ -148,6 +148,16 @@
 .form input#btn-next:hover {
     border-color: hsl(213, 99%, 32%);
     background-color: hsl(213, 99%, 32%);
+}
+
+.form input#btn-confirm {
+    background-color: hsl(243, 100%, 62%);
+    border: 1px solid hsl(243, 100%, 62%);
+}
+
+.form input#btn-confirm:hover {
+    background-color: hsl(243, 100%, 73%);
+    border-color: hsl(243, 100%, 73%);
 }
 
 /* step 2 */
@@ -324,4 +334,56 @@ span.monthly {
 
 .form .complementos div.check {
     gap: 25px;
+}
+
+.contas {
+    background-color: hsl(231, 100%, 99%);
+    display: flex;
+    flex-direction: column;
+}
+
+.contas div {
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contas p, .contas span {
+    line-height: 25px;
+}
+
+.contas-plano {
+    border-bottom: 1px solid hsl(217, 100%, 97%);
+}
+
+.contas-plano p, .contas-plano span {
+    font-weight: bold;
+    color: hsl(213, 96%, 18%) !important;
+}
+
+.contas-plano a {
+    font-weight: 400;
+    color: hsl(231, 11%, 63%);
+    transition: .5s;
+}
+
+.contas-plano a:hover {
+    color: hsl(243, 100%, 62%);
+}
+
+.contas-total span {
+    font-weight: 700;
+    color: hsl(243, 100%, 62%);
+}
+
+#spansContainer {
+    color: hsl(231, 11%, 63%);
+    display: flex;
+    flex-direction: column;
+}
+
+#valoresContainer {
+    color: hsl(213, 96%, 18%) !important;
+    display: flex;
+    flex-direction: column;
 }

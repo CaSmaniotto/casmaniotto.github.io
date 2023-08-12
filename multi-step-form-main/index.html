@@ -44,7 +44,7 @@
           </div>
         </div>
       </div>
-      <div class="main">
+      <div class="main" style="display: flex;">
         <div>
           <h1>Personagel info</h1>
           <p>Please provide your name, email address, and phone number.</p>
@@ -79,7 +79,7 @@
                 <img src="assets/images/icon-arcade.svg" alt="arcade">
               </div>
               <div class="preco">
-                <span id="sub"><b>Arcade</b></span>
+                <span id="sub" value="Arcade"><b>Arcade</b></span>
                 <span id="valor">$9/mo</span>
                 <span id="yearly">2 months free</span>
               </div>
@@ -90,7 +90,7 @@
                 <img src="assets/images/icon-advanced.svg" alt="advanced">
               </div>
               <div class="preco">
-                <span id="sub"><b>Advanced</b></span>
+                <span id="sub" value="Advanced"><b>Advanced</b></span>
                 <span id="valor">$12/mo</span>
                 <span id="yearly">2 months free</span>
               </div>
@@ -101,7 +101,7 @@
                 <img src="assets/images/icon-pro.svg" alt="pro">
               </div>
               <div class="preco">
-                <span id="sub"><b>Pro</b></span>
+                <span id="sub" value="Pro"><b>Pro</b></span>
                 <span id="valor">$15/mo</span>
                 <span id="yearly">2 months free</span>
               </div>
@@ -130,25 +130,25 @@
           <p>Add-ons help enhance your gaming experience.</p>
         </div>
         <div class="form">
-          <div class="complementos" id="complementos">
+          <div class="complementos" id="complementos" value="Online Service">
             <div class="check">
-              <input type="checkbox" name="checkmark" id="checkmark" class="checkmark">
+              <input type="checkbox" name="checkmark" id="checkmark" class="checkmark" value="1">
               <p><span>Online Service</span><br>
                 Access to multiplayer games</p>
             </div>
             <p id="price">+$1/mo</p>
           </div>
-          <div class="complementos">
+          <div class="complementos" value="Larger storage">
             <div class="check">
-              <input type="checkbox" name="checkmark" id="checkmark" class="checkmark">
+              <input type="checkbox" name="checkmark" id="checkmark" class="checkmark" value="2">
               <p><span>Larger storage</span><br>
                 Extra 1TB of cloud save</p>
             </div>
             <p id="price">+$2/mo</p>
           </div>
-          <div class="complementos">
+          <div class="complementos" value="Customizable Profile">
             <div class="check">
-              <input type="checkbox" name="checkmark" id="checkmark" class="checkmark">
+              <input type="checkbox" name="checkmark" id="checkmark" class="checkmark" value="2">
               <p><span>Customizable Profile</span><br>
                 Custom theme on your profile</p>
             </div>
@@ -162,33 +162,37 @@
         </div>
       </div>
 
+      <div class="main" style="display: none;">
+        <div>
+          <h1>Finishing up</h1>
+          <p>Double-check everything looks OK before confirming.</p>
+        </div>
+        <div class="form">
+          <div class="contas">
+            <div class="contas-plano">
+              <p><span id="plano">Arcade</span><span id="toggle"> (MonthLy)</span><br>
+                <a href="#" onclick="nextPrev(-1)">Change</a></p>
+              <span>$9/mo</span>
+            </div>
+            <div class="contas-servicos">
+              <p id="spansContainer"></p>
+              <p id="valoresContainer"></p>
+            </div>
+            <div class="contas-total">
+              <p id="total">Total (per month)</p>
+              <span>+$12/mo</span>
+            </div>
+          </div>
+          <div class="botoes">
+            <input type="button" value="Go Back" id="btn-back" onclick="nextPrev(-1)">
+            <input type="button" value="Confirm" id="btn-confirm" onclick="getValues()">
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!--
-
-  Online service
-  Access to multiplayer games
-  +$1/mo
-
-  Larger storage
-  Extra 1TB of cloud save
-  +$2/mo
-
-  Customizable Profile
-  Custom theme on your profile
-  +$2/mo
-
-  Go Back
-  Next Step -->
-
-  <!-- Step 3 end -->
-
   <!-- Step 4 start -->
-
-  <!-- Finishing up
-  Double-check everything looks OK before confirming. -->
 
   <!-- Dynamically add subscription and add-on selections here -->
 
@@ -313,8 +317,13 @@
     // Exibe o texto ao clicar no checkbox e vice-versa
     checkbox.addEventListener('change', () => {
       const yearlyElements = document.querySelectorAll('#yearly');
-      let mSpam = document.getElementsByClassName('monthly');
-      let ySpam = document.getElementsByClassName('year');
+      var mSpam = document.getElementsByClassName('monthly');
+      var ySpam = document.getElementsByClassName('year');
+      var total = document.getElementById('total');
+      var tipo = document.getElementById('toggle');
+
+      total.innerHTML = checkbox.checked ? "Total (per year)" : "Total (per month)";
+      tipo.innerHTML = checkbox.checked ? " (Yearly)" : " (Monthly)";
 
       // Chama a função para atualizar o valor/texto
       const elementsToUpdate = document.querySelectorAll("#valor, #price");
@@ -326,6 +335,10 @@
       });
 
       // Muda a cor da div fora da checkbox
+
+
+      //--------------------- Alterar esse trecho ---------------------
+      
       yearlyElements.forEach(index => {
         if (checkbox.checked) {
           ySpam[0].style.color = "hsl(213, 96%, 18%)"; //azul
@@ -351,11 +364,14 @@
 
     function selectButton(buttonIndex) {
       const buttons = document.querySelectorAll('.plano');
-      
+      const id_plano = document.getElementById('plano')
+
       buttons.forEach((button, index) => {
         if (index + 1 === buttonIndex) {
+          id_plano.innerHTML = buttons[buttonIndex-1].querySelector('div span#sub').getAttribute('value')
           button.classList.add('selected');
           selectedButton = button;
+
         } else {
           button.classList.remove('selected');
         }
@@ -365,20 +381,88 @@
     // Muda o estado das checkboxes --step 3--
     const checkmarks = document.querySelectorAll('.checkmark');
     const targetDivs = document.querySelectorAll('.complementos');
-
+    var valoresSelecionados = [];
     targetDivs.forEach((targetDiv, index) => {
       targetDiv.addEventListener('click', () => {
+
+        elementos = document.querySelectorAll('#price');
+
+        var x = elementos[index].textContent;
+        x = x.match(/\d+/)
+        var y = targetDiv.getAttribute('value');
+        var par = {nome: y, valor: x[0]};
+
         const checkmark = checkmarks[index];
         if (!checkmark.checked) {
           checkmark.checked = !checkmark.checked;
           targetDiv.classList.add('ticado');
+          valoresSelecionados.push(par);
+          criarSpan(par.nome);
+          criarValor(par.valor);
         } else {
           checkmark.checked = !checkmark.checked;
           targetDiv.classList.remove('ticado');
+          var v;
+
+
+          // Percorre todos os elementos do array associativo e delete o par
+          Object.keys(valoresSelecionados).forEach(chave => {
+            const valor = valoresSelecionados[chave];
+            if (par.nome == valor.nome) {
+              delete valoresSelecionados[chave]
+              v = chave;
+              valoresSelecionados = Object.values(valoresSelecionados);
+            }
+          });
+          removerSpan(par.nome)
+          removerValor(v)
         }
+        
+        // Cria um span (step 4)
+        function criarSpan(valor) {
+          const spansContainer = document.getElementById('spansContainer');
+          const span = document.createElement('span');
+          span.textContent = valor;
+          spansContainer.appendChild(span);
+          return false;
+        }
+
+        // Remove o span (step 4)
+        function removerSpan(valor) {
+          const spans = document.querySelectorAll('#spansContainer span');
+          spans.forEach(span => {
+            if (span.textContent === valor) {
+              span.remove();
+            }
+          return false;
+          });
+        }
+
+        // Criar o valor que fica rente ao span com nome do plano (step 4)
+        function criarValor(valor) {
+          const valoresContainer = document.getElementById('valoresContainer');
+          const span = document.createElement('span');
+          span.textContent = "+$" + valor + "/mo";
+          valoresContainer.appendChild(span);
+          return false;
+        }
+
+        // Remove o valor (já que o span foi removido)
+        function removerValor(valor) {
+          const spans = document.querySelectorAll('#valoresContainer span');
+          
+          if (valor >= 0 && valor < spans.length) {
+            spans[valor].remove();
+          } else {
+            console.log("Índice fora dos limites.");
+          }
+        }
+
+
       });
     });
 
+    // Ao clicar na div o checkmark é ticado e vice-versa
     checkmarks.forEach((checkmark, index) => {
       checkmark.addEventListener('change', () => {
         const targetDiv = targetDivs[index];
@@ -400,6 +484,24 @@
       return valueText.replace(/[0-9.]+/g, convertedValue).replace(/\/.*/, currencySymbol);
     }
 
+
+
+    // function getValues() {
+    //   var checkboxes = document.querySelectorAll('#checkmark');
+    //   var checkboxesMarcadas = [];
+
+    //   for (var i = 0; i < checkboxes.length; i++) {
+    //       if (checkboxes[i].checked) {
+    //         console.log(checkboxes[i].value)
+    //           var values = {
+    //             elemento: checkboxes[i],
+    //             valor: checkboxes[i].value
+    //           };
+    //           checkboxesMarcadas.push(values);
+    //       }
+    //   }
+    //   console.log(checkboxesMarcadas);
+    // }
           
   </script>
 </body>
