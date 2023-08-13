@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
@@ -10,10 +12,17 @@
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="cartao">
@@ -25,22 +34,26 @@
           <div class="item">
             <a href="#" class="indice focused">1</a>
             <p><span>STEP 1</span><br>
-            <b>YOUR INFO</b></p>
+              <b>YOUR INFO</b>
+            </p>
           </div>
           <div class="item">
             <a href="#" class="indice">2</a>
             <p><span>STEP 2</span><br>
-            <b>SELECT PLAN</b></p>
+              <b>SELECT PLAN</b>
+            </p>
           </div>
           <div class="item">
             <a href="#" class="indice">3</a>
             <p><span>STEP 3</span><br>
-            <b>ADD-ONS</b></p>
+              <b>ADD-ONS</b>
+            </p>
           </div>
           <div class="item">
             <a href="#" class="indice">4</a>
             <p><span>STEP 4</span><br>
-            <b>SUMMARY</b></p>
+              <b>SUMMARY</b>
+            </p>
           </div>
         </div>
       </div>
@@ -57,7 +70,8 @@
           <input type="email" name="email" id="email" placeholder="e.g. stephenking@lorem.com">
 
           <label for="">Phone Number<span style="float: right" id="alerta"></span></label>
-          <input type="tel" name="numero" id="numero" placeholder="e.g. +1 234 567 890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="10">
+          <input type="tel" name="numero" id="numero" placeholder="e.g. +1 234 567 890"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="10">
 
           <div class="botoes">
             <input type="button" value="Go Back" id="btn-back" onclick="nextPrev(-1)">
@@ -80,18 +94,18 @@
               </div>
               <div class="preco">
                 <span id="sub" value="Arcade"><b>Arcade</b></span>
-                <span id="valor">$9/mo</span>
+                <span id="valor" value="9">$9/mo</span>
                 <span id="yearly">2 months free</span>
               </div>
             </button>
-  
+
             <button class="plano" type="button" onclick="selectButton(2)">
               <div class="icone">
                 <img src="assets/images/icon-advanced.svg" alt="advanced">
               </div>
               <div class="preco">
                 <span id="sub" value="Advanced"><b>Advanced</b></span>
-                <span id="valor">$12/mo</span>
+                <span id="valor" value="12">$12/mo</span>
                 <span id="yearly">2 months free</span>
               </div>
             </button>
@@ -102,7 +116,7 @@
               </div>
               <div class="preco">
                 <span id="sub" value="Pro"><b>Pro</b></span>
-                <span id="valor">$15/mo</span>
+                <span id="valor" value="15">$15/mo</span>
                 <span id="yearly">2 months free</span>
               </div>
             </button>
@@ -157,7 +171,7 @@
           <div class="botoes">
             <input type="button" value="Go Back" id="btn-back" onclick="nextPrev(-1)">
             <!-- <input type="submit" value="Next Step" id="btn-next" onclick="nextPrev(1)"> -->
-            <input type="button" value="Next Step" id="btn-next" onclick="nextPrev(1)">
+            <input type="button" value="Next Step" id="btn-next" onclick="nextPrev(1); calcularTotal()">
           </div>
         </div>
       </div>
@@ -171,8 +185,9 @@
           <div class="contas">
             <div class="contas-plano">
               <p><span id="plano">Arcade</span><span id="toggle"> (MonthLy)</span><br>
-                <a href="#" onclick="nextPrev(-1)">Change</a></p>
-              <span>$9/mo</span>
+                <a href="#" onclick="nextPrev(-1)">Change</a>
+              </p>
+              <span id="preco-plano">$9/mo</span>
             </div>
             <div class="contas-servicos">
               <p id="spansContainer"></p>
@@ -180,12 +195,12 @@
             </div>
             <div class="contas-total">
               <p id="total">Total (per month)</p>
-              <span>+$12/mo</span>
+              <span id="span-total"></span>
             </div>
           </div>
           <div class="botoes">
             <input type="button" value="Go Back" id="btn-back" onclick="nextPrev(-1)">
-            <input type="button" value="Confirm" id="btn-confirm" onclick="getValues()">
+            <input type="button" value="Confirm" id="btn-confirm" onclick="nextPrev(1)">
           </div>
         </div>
       </div>
@@ -212,297 +227,12 @@
   to email us at support@loremgaming.com. -->
 
   <!-- Step 5 end -->
-  
+
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
   </div>
-
-  <script>
-    // Elementos
-    const inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
-    const alertas = document.querySelectorAll('#alerta');
-    const email = document.getElementById('email');
-    const numero = document.getElementById('numero');
-    const checkbox = document.getElementById('checkbox');
-    const enviar = document.getElementsByClassName('enviar');
-
-    // Valida os inputs
-    const validateInputs = (input, index) => {
-      if (input.value.trim() === '') {
-        alertas[index].style.display = 'inline'; // Mostra o span de aviso correspondente
-        alertas[index].innerHTML = 'This field is required';
-        input.style.borderColor = 'hsl(354, 84%, 57%)';
-        return false;
-      } else {
-        alertas[index].style.display = 'none';   // Esconde o span de aviso
-        input.style.borderColor = 'hsl(243, 100%, 62%)';
-        return true;
-      }
-    }
-    inputs.forEach((input, index) => {
-      input.addEventListener('input', () => {
-        validateInputs(input, index);
-      });
-    });
-
-
-    // Verifica se o email é valido
-    const checkEmail = () => {
-      var validRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (!email.value.match(validRegex)) {
-        alertas[1].style.display = 'inline';
-        alertas[1].innerHTML = 'Invalid email address';
-        return false
-      } else {
-        alertas[1].style.display = 'none';
-        return true;
-      }
-    }
-    email.addEventListener('input', checkEmail);
-
-    // Verifica se o número de telefone é valido
-    const checkTelefone = () => {
-      var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-      if ((!numero.value.match(re)) || numero.value.length != 10) {
-        alertas[2].style.display = 'inline';
-        alertas[2].innerHTML = 'Invalid telephone number';
-        return false
-      } else {
-        alertas[2].style.display = 'none';
-        return true
-      }
-    }
-    numero.addEventListener('input', checkTelefone);
-
-    // Valida o formulário
-    enviar[0].addEventListener('click', () => {
-
-      // Verifica seus os inputs estão preenchidos
-      for (let index = 0; index < inputs.length; index++) {
-        const input = inputs[index];
-        if (!validateInputs(input, index)) {
-          return false;
-        }
-      }
-
-      // Verifica se o email e o telefone são validos
-      if (!checkEmail() || !checkTelefone()) {
-        return false
-      }
-      return nextPrev(1);
-
-    })
-
-    // Navega para a próxima tab ou para a anterior
-    current = 0
-
-    function nextPrev(n) {
-      var indices = document.querySelectorAll('.indice');
-      var tabs = document.querySelectorAll('.main');
-
-      tabs[current].style.display = 'none';
-      indices[current].classList.remove('focused');
-      current += n;
-      
-      tabs[current].style.display = 'flex';
-      indices[current].classList.add('focused');
-
-      if (current == 0) {
-        document.getElementById('btn-back').style.display = 'none';
-        indices[current].classList.add('focused');
-      }
-    }
-
-    // Exibe o texto ao clicar no checkbox e vice-versa
-    checkbox.addEventListener('change', () => {
-      const yearlyElements = document.querySelectorAll('#yearly');
-      var mSpam = document.getElementsByClassName('monthly');
-      var ySpam = document.getElementsByClassName('year');
-      var total = document.getElementById('total');
-      var tipo = document.getElementById('toggle');
-
-      total.innerHTML = checkbox.checked ? "Total (per year)" : "Total (per month)";
-      tipo.innerHTML = checkbox.checked ? " (Yearly)" : " (Monthly)";
-
-      // Chama a função para atualizar o valor/texto
-      const elementsToUpdate = document.querySelectorAll("#valor, #price");
-
-      elementsToUpdate.forEach((element) => {
-          const originalValue = element.textContent;
-          const convertedValue = convertCurrency(originalValue);
-          element.textContent = convertedValue;
-      });
-
-      // Muda a cor da div fora da checkbox
-
-
-      //--------------------- Alterar esse trecho ---------------------
-      
-      yearlyElements.forEach(index => {
-        if (checkbox.checked) {
-          ySpam[0].style.color = "hsl(213, 96%, 18%)"; //azul
-          mSpam[0].style.color = "hsl(231, 11%, 63%)"; //cinza
-          index.style.display = 'block';
-        } else {
-          ySpam[0].style.color = "hsl(231, 11%, 63%)";
-          mSpam[0].style.color = "hsl(213, 96%, 18%)";
-          index.style.display = 'none';
-        }
-      });
-    });
-
-    // Oculta o botão de voltar
-    document.addEventListener('DOMContentLoaded', () => {
-      if (current == 0) {
-        document.getElementById('btn-back').style.display = 'none'
-      }
-    });
-
-    // Seleciona uma opção e 'desseleciona' as outras -- step2 --
-    let selectedButton = null;
-
-    function selectButton(buttonIndex) {
-      const buttons = document.querySelectorAll('.plano');
-      const id_plano = document.getElementById('plano')
-
-      buttons.forEach((button, index) => {
-        if (index + 1 === buttonIndex) {
-          id_plano.innerHTML = buttons[buttonIndex-1].querySelector('div span#sub').getAttribute('value')
-          button.classList.add('selected');
-          selectedButton = button;
-
-        } else {
-          button.classList.remove('selected');
-        }
-      });
-    }
-
-    // Muda o estado das checkboxes --step 3--
-    const checkmarks = document.querySelectorAll('.checkmark');
-    const targetDivs = document.querySelectorAll('.complementos');
-    var valoresSelecionados = [];
-    targetDivs.forEach((targetDiv, index) => {
-      targetDiv.addEventListener('click', () => {
-
-        elementos = document.querySelectorAll('#price');
-
-        var x = elementos[index].textContent;
-        x = x.match(/\d+/)
-        var y = targetDiv.getAttribute('value');
-        var par = {nome: y, valor: x[0]};
-
-        const checkmark = checkmarks[index];
-        if (!checkmark.checked) {
-          checkmark.checked = !checkmark.checked;
-          targetDiv.classList.add('ticado');
-          valoresSelecionados.push(par);
-          criarSpan(par.nome);
-          criarValor(par.valor);
-        } else {
-          checkmark.checked = !checkmark.checked;
-          targetDiv.classList.remove('ticado');
-          var v;
-
-
-          // Percorre todos os elementos do array associativo e delete o par
-          Object.keys(valoresSelecionados).forEach(chave => {
-            const valor = valoresSelecionados[chave];
-            if (par.nome == valor.nome) {
-              delete valoresSelecionados[chave]
-              v = chave;
-              valoresSelecionados = Object.values(valoresSelecionados);
-            }
-          });
-          removerSpan(par.nome)
-          removerValor(v)
-        }
-        
-        // Cria um span (step 4)
-        function criarSpan(valor) {
-          const spansContainer = document.getElementById('spansContainer');
-          const span = document.createElement('span');
-          span.textContent = valor;
-          spansContainer.appendChild(span);
-          return false;
-        }
-
-        // Remove o span (step 4)
-        function removerSpan(valor) {
-          const spans = document.querySelectorAll('#spansContainer span');
-          spans.forEach(span => {
-            if (span.textContent === valor) {
-              span.remove();
-            }
-          return false;
-          });
-        }
-
-        // Criar o valor que fica rente ao span com nome do plano (step 4)
-        function criarValor(valor) {
-          const valoresContainer = document.getElementById('valoresContainer');
-          const span = document.createElement('span');
-          span.textContent = "+$" + valor + "/mo";
-          valoresContainer.appendChild(span);
-          return false;
-        }
-
-        // Remove o valor (já que o span foi removido)
-        function removerValor(valor) {
-          const spans = document.querySelectorAll('#valoresContainer span');
-          
-          if (valor >= 0 && valor < spans.length) {
-            spans[valor].remove();
-          } else {
-            console.log("Índice fora dos limites.");
-          }
-        }
-
-
-      });
-    });
-
-    // Ao clicar na div o checkmark é ticado e vice-versa
-    checkmarks.forEach((checkmark, index) => {
-      checkmark.addEventListener('change', () => {
-        const targetDiv = targetDivs[index];
-        if ((!checkmark.checked) || (!targetDiv.classList.contains('ticado'))) {
-          checkmark.checked = !checkmark.checked;
-          targetDiv.classList.add('ticado');
-        } else {
-          checkmark.checked = !checkmark.checked;
-          targetDiv.classList.remove('ticado');
-        }
-      });
-    });
-
-    // Converte os valores de monthly para yearly
-    function convertCurrency(valueText) {
-      const numericValue = parseFloat(valueText.replace(/[^\d.]/g, ""));
-      const convertedValue = checkbox.checked ? numericValue * 10 : numericValue / 10;
-      const currencySymbol = checkbox.checked ? "/ye" : "/mo";
-      return valueText.replace(/[0-9.]+/g, convertedValue).replace(/\/.*/, currencySymbol);
-    }
-
-
-
-    // function getValues() {
-    //   var checkboxes = document.querySelectorAll('#checkmark');
-    //   var checkboxesMarcadas = [];
-
-    //   for (var i = 0; i < checkboxes.length; i++) {
-    //       if (checkboxes[i].checked) {
-    //         console.log(checkboxes[i].value)
-    //           var values = {
-    //             elemento: checkboxes[i],
-    //             valor: checkboxes[i].value
-    //           };
-    //           checkboxesMarcadas.push(values);
-    //       }
-    //   }
-    //   console.log(checkboxesMarcadas);
-    // }
-          
-  </script>
+  <script src="script.js"></script>
 </body>
+
 </html>
