@@ -57,7 +57,7 @@
           </div>
         </div>
       </div>
-      <div class="main" style="display: flex;">
+      <div class="main">
         <div>
           <h1>Personagel info</h1>
           <p>Please provide your name, email address, and phone number.</p>
@@ -75,13 +75,12 @@
 
           <div class="botoes">
             <input type="button" value="Go Back" id="btn-back" onclick="nextPrev(-1)">
-            <!-- <input type="submit" value="Next Step" id="btn-next" onclick="nextPrev(1)"> -->
             <input type="submit" value="Next Step" id="btn-next" class="enviar">
           </div>
         </div>
       </div>
 
-      <div class="main" style="display: none;">
+      <div class="main">
         <div>
           <h1>Select your plan</h1>
           <p>You have the option of monthly or yearly billing.</p>
@@ -132,13 +131,12 @@
           </div>
           <div class="botoes">
             <input type="button" value="Go Back" id="btn-back" onclick="nextPrev(-1)">
-            <!-- <input type="submit" value="Next Step" id="btn-next" onclick="nextPrev(1)"> -->
             <input type="button" value="Next Step" id="btn-next" onclick="nextPrev(1)">
           </div>
         </div>
       </div>
 
-      <div class="main" style="display: none;">
+      <div class="main">
         <div>
           <h1>Pick add-ons</h1>
           <p>Add-ons help enhance your gaming experience.</p>
@@ -170,13 +168,12 @@
           </div>
           <div class="botoes">
             <input type="button" value="Go Back" id="btn-back" onclick="nextPrev(-1)">
-            <!-- <input type="submit" value="Next Step" id="btn-next" onclick="nextPrev(1)"> -->
             <input type="button" value="Next Step" id="btn-next" onclick="nextPrev(1); calcularTotal()">
           </div>
         </div>
       </div>
 
-      <div class="main" style="display: none;">
+      <div class="main">
         <div>
           <h1>Finishing up</h1>
           <p>Double-check everything looks OK before confirming.</p>
@@ -204,33 +201,24 @@
           </div>
         </div>
       </div>
+
+      <div class="main">
+        <div class="thank-you">
+          <img src="assets/images/icon-thank-you.svg" alt="thank-you">
+          <div>
+            <h1>Thank you!</h1>
+            <p>Thanks for confirming your subscription! We hope you have fun 
+              using our platform. If you ever need support, please feel free 
+              to email us at support@loremgaming.com.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Step 4 start -->
-
-  <!-- Dynamically add subscription and add-on selections here -->
-
-  <!-- Total (per month/year)
-
-  Go Back
-  Confirm -->
-
-  <!-- Step 4 end -->
-
-  <!-- Step 5 start -->
-
-  <!-- Thank you!
-
-  Thanks for confirming your subscription! We hope you have fun 
-  using our platform. If you ever need support, please feel free 
-  to email us at support@loremgaming.com. -->
-
-  <!-- Step 5 end -->
-
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="https://www.frontendmentor.io/profile/CaSmaniotto">CaSmaniotto</a>.
   </div>
   <script src="script.js"></script>
 </body>

@@ -6,6 +6,8 @@
 
 .container {
     background-color: hsl(217, 100%, 97%);
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .cartao {
@@ -16,6 +18,7 @@
     margin: auto;
     padding: 10px;
     border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .sidebar {
@@ -65,11 +68,18 @@
 
 .main {
     width: 100%;
-    max-width: 400px;
-    display: flex;
+    max-width: 430px;
     flex-direction: column;
     gap: 20px;
-    padding: 40px 80px;
+    padding: 40px 75px;
+}
+
+    .main:nth-child(2) {
+    display: flex;
+}
+
+.main:nth-child(3), .main:nth-child(4), .main:nth-child(5), .main:nth-child(6) {
+    display: none;
 }
 
 .main div h1 {
@@ -386,4 +396,157 @@ span.monthly {
     color: hsl(213, 96%, 18%) !important;
     display: flex;
     flex-direction: column;
+}
+
+div.main:nth-child(6) {
+    margin: auto 0;
+    text-align: center;
+}
+
+.thank-you {
+    display: grid;
+    gap: 20px;
+}
+
+.thank-you img {
+    margin: auto;
+}
+
+.thank-you div p {
+    margin-top: 10px;
+    line-height: 25px;
+}
+
+@media(max-width: 1100px) {
+    .cartao {
+        width: 90vw;
+    }
+}
+
+@media(max-width: 900px) {
+    .cartao {
+        width: 95vw;
+    }
+}
+
+/* mobile responsive */
+@media(max-width: 770px) {
+    .main {
+        padding: 30px 40px;
+        width: 60vw;
+        margin: auto !important;
+        height: auto;
+        position: absolute;
+        top: 25vh;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+    .container {
+        padding: 0;
+        width: 100vw;
+        height: 140vh;
+    }
+
+    .cartao {
+        flex-direction: column;
+        padding: 0;
+        width: 100vw;
+        box-shadow: none;
+    }
+
+    .menu {
+        display: flex !important;
+        flex-direction: row;
+        gap: auto !important;
+        padding: 20px !important;
+        width: 75vw !important;
+        margin: auto !important;
+        justify-content: center;
+    }
+
+    .imagem {
+        background-color: hsl(217, 100%, 97%);
+    }
+
+    .imagem img {
+        width: 100%;
+        content: url('assets/images/bg-sidebar-mobile.svg');
+    }
+
+    .item {
+        width: 20px !important;
+        height: 40px !important;
+    }
+
+    .item p {
+        display: none;
+    }
+
+    .botoes {
+        padding: 20px;
+        position: fixed;
+        width: auto !important;
+        margin: 0 !important;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #fff;
+        z-index: 999
+    }
+
+    .complementos {
+        font-size: 14px;
+        padding: 5px !important;
+        height: 65px !important;
+    }
+
+    .check {
+        gap: 10px !important;
+    }
+
+    .check input {
+        width: 18px !important;
+    }
+
+    .lista-planos {
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .plano {
+        flex-direction: row !important;
+        padding: 15px !important;
+        gap: 15px !important;
+    }
+
+    .contas-servicos, .contas-plano, .contas-total {
+        padding: 10px !important;
+    }
+
+}
+
+@media(max-width: 375px) {
+    .main {
+        top: 20vh;
+        padding: 20px;
+        width: 80vw;
+        height: auto;
+    }
+
+    .main h1 {
+        margin-bottom: 20px !important;
+        font-size: 20px;
+    }
+
+    .thank-you {
+        padding: 20px 0px;
+    }
+    
+    .thank-you img {
+        width: 50px;
+    }
 }

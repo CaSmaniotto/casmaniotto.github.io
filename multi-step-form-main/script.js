@@ -123,12 +123,10 @@ checkbox.addEventListener('change', () => {
             ySpam[0].style.color = "hsl(213, 96%, 18%)"; //azul
             mSpam[0].style.color = "hsl(231, 11%, 63%)"; //cinza
             index.style.display = 'block';
-            index.style.visibility = 'show';
         } else {
             ySpam[0].style.color = "hsl(231, 11%, 63%)";
             mSpam[0].style.color = "hsl(213, 96%, 18%)";
             index.style.display = 'none';
-            index.style.visibility = 'hidden';
         }
     });
 });
@@ -140,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Seleciona uma opção e 'desseleciona' as outras -- step2 --
+// Seleciona uma opção e desseleciona as outras -- step2 --
 let selectedButton = null;
 
 const selectButton = (buttonIndex) => {
@@ -160,6 +158,7 @@ const selectButton = (buttonIndex) => {
     });
 }
 
+// Atualiza os valores da step 4 caso o checkbox seja ticado, vice-versa
 const atualizarValor = () => {
     const spans = document.querySelectorAll('#valoresContainer span');
 
@@ -177,8 +176,7 @@ const atualizarValor = () => {
     });
 }
 
-
-// Muda o estado das checkboxes --step 3--
+// Exibe a informação quando marcada
 const criarSpan = (valor) => {
     const spansContainer = document.getElementById('spansContainer');
     const span = document.createElement('span');
@@ -186,6 +184,7 @@ const criarSpan = (valor) => {
     spansContainer.appendChild(span);
 }
 
+// Exclue a informação quando desmarcada
 const removerSpan = (valor) => {
     const spans = document.querySelectorAll('#spansContainer span');
     spans.forEach(span => {
@@ -195,6 +194,7 @@ const removerSpan = (valor) => {
     });
 }
 
+// Exibe o valor quando marcado
 const criarValor = (valor) => {
     const valoresContainer = document.getElementById('valoresContainer');
     const span = document.createElement('span');
@@ -207,6 +207,7 @@ const criarValor = (valor) => {
     valoresContainer.appendChild(span);
 }
 
+// Exclue o valor quando desmarcada
 const removerValor = (valor) => {
     const spans = document.querySelectorAll('#valoresContainer span');
     if (valor >= 0 && valor < spans.length) {
@@ -216,6 +217,7 @@ const removerValor = (valor) => {
     }
 }
 
+// Step 3 - Quando selecionado, muda a cor da div externa
 targetDivs.forEach((targetDiv, index) => {
     const elementos = document.querySelectorAll('#price');
     const x = elementos[index].textContent.match(/\d+/);
@@ -268,6 +270,7 @@ const convertCurrency = (valueText) => {
     return valueText.replace(/[0-9.]+/g, convertedValue).replace(/\/.*/, currencySymbol);
 }
 
+// Step 4 - Cal
 const calcularTotal = () => {
     const valores = document.querySelectorAll("#preco-plano, #spanValor");
     const total = document.getElementById('span-total');
