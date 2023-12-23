@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav img, svg{
+    height: auto;
+}
+
+nav {
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+    border-bottom: 2px solid purple;
+}
+
+nav a {
+    display: flex;
+}
+
+nav span {
+    margin: auto 10px; 
+}
+
+nav div {
+    gap: 20px;
+    display: flex;
+}
